@@ -7,6 +7,8 @@ A [Jenkins swarm](https://wiki.jenkins-ci.org/display/JENKINS/Swarm+Plugin) slav
 
 A basic slave for building dot net core applications on.
 
+Requires refactoring to reduce size of image and this is using my local repo, need to change to your own repo
+
 ## Running
 
 To run a Docker container passing [any parameters](https://wiki.jenkins-ci.org/display/JENKINS/Swarm+Plugin#SwarmPlugin-AvailableOptions) to the slave
@@ -21,4 +23,11 @@ Linking to the Jenkins master container there is no need to use `--master`
 
 # Building
 
-    docker build -t registry.sonictexture.co.uk/jenkins-swarm-slave-nodejs-yarn-docker:latest .
+    docker build -t jenkins-swarm-slave-nodejs-yarn-docker:latest .
+
+#### Push image to local repo
+
+    docker login -u docker_reg https://registry.sonictexture.co.uk
+    docker build -t jenkins-swarm-slave-nodejs-yarn-docker:latest . && \
+    docker tag jenkins-swarm-slave-nodejs-yarn-docker:latest registry.sonictexture.co.uk/jenkins-swarm-slave-nodejs-yarn-docker:latest && \
+    docker push registry.sonictexture.co.uk/jenkins-swarm-slave-nodejs-yarn-docker:latest
