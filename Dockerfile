@@ -12,7 +12,9 @@ RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources
 RUN apt update && apt install yarn
 
 # Install tailwind
-RUN yarn add tailwind
+RUN yarn global add tailwind
+# Install env-cmd
+RUN yarn global add env-cmd
 
 # Install docker compose
 RUN curl -L "https://github.com/docker/compose/releases/download/1.23.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
