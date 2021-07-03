@@ -33,4 +33,4 @@ COPY jenkins-slave.sh /usr/local/bin/jenkins-slave.sh
 USER jenkins-slave
 VOLUME /home/jenkins-slave
 
-ENTRYPOINT ["/bin/bash", "-c", "/usr/local/bin/jenkins-slave.sh"]
+ENTRYPOINT ["/bin/bash", "-c", "/usr/local/bin/jenkins-slave.sh", "-username", "$USERNAME", "-password", "$PASSWORD", "-executors", "$EXECUTORS", "-labels", "$LABELS"]
